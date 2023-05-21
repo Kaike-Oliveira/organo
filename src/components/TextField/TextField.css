@@ -1,0 +1,26 @@
+.text_field {
+  margin: 24px 0;
+}
+
+.text_field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.text_field input {
+  background-color: #fff;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  padding: 24px;
+  border: none;
+  font-size: 24px;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.5s;
+}
+
+.text_field input:focus {
+  border-bottom: 4px #6278f7 solid;
+}
