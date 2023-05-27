@@ -1,74 +1,96 @@
 // CORE
-import { useState } from 'react';
+import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 // COMPONENTS
-import { Banner } from './components/Banner/Banner';
-import { Form } from './components/Form/Form';
-import { Team } from './components/Team/Team';
-import { Footer } from './components/Footer/Footer';
+import {Banner} from "./components/Banner/Banner";
+import {Form} from "./components/Form/Form";
+import {Footer} from "./components/Footer/Footer";
+import Team from "./components/Team/Team";
 
 function App() {
 
-  const teams = [
+  const [teams, setTeams] = useState([
     {
-      name: 'Programming School',
-      primaryColor: '#57c278',
-      secondaryColor: '#d9f7e9',
+      id: uuidv4(),
+      name: 'Programming',
+      color: '#57C278'
     },
     {
+      id: uuidv4(),
       name: 'Front-End',
-      primaryColor: '#82CFFA',
-      secondaryColor: '#E8F8FF',
+      color: '#82CFFA'
     },
     {
+      id: uuidv4(),
       name: 'Data Science',
-      primaryColor: '#A6D157',
-      secondaryColor: '#F0F8E2',
+      color: '#A6D157'
     },
     {
+      id: uuidv4(),
       name: 'Devops',
-      primaryColor: '#E06B69',
-      secondaryColor: '#FDE7E8',
+      color: '#E06B69'
     },
     {
+      id: uuidv4(),
       name: 'UX and Design',
-      primaryColor: '#D86EBF',
-      secondaryColor: '#FAE5F5',
+      color: '#DB6EBF'
     },
     {
+      id: uuidv4(),
       name: 'Mobile',
-      primaryColor: '#FEBA05',
-      secondaryColor: '#FFF5D9',
+      color: '#FFBA05'
     },
     {
-      name: 'Innovation and Management',
-      primaryColor: '#FF8A29',
-      secondaryColor: '#FFEEDF',
-    }
-  ];
+      id: uuidv4(),
+      name: 'Innovation',
+      color: '#FF8A29'
+    },
+  ]);
 
-  const [collaborators, setCollaborators] = useState([]);
+  const initial = [];
 
-  const newCollaborator = (collaborator) => {
-      setCollaborators([...collaborators, collaborator]);
-  }
+  const [collaborators, setCollaborators] = useState(initial);
+
+  function deleteCollaborator(id) {
+    setCollaborators(collaborators.filter(collaborator => collaborator.id !== id));
+  };
+
+  function changeColor(color, id) {
+    setTeams(teams.map(team => {
+      if(team.id === id) {
+        team.color = color;
+      }
+      return team;
+    }));
+  };
+
+  function registerTeam(newTeam) {
+    setTeams([...teams, { ...newTeam, id: uuidv4() }]);
+  };
+
+  function resolveFavorite(id) {
+    setCollaborators(collaborators.map(collaborator => {
+      if(collaborator.id === id) collaborator.favorite = !collaborator.favorite;
+      return collaborator;
+    }));
+  };
+
 
   return (
-    <div className="App">
+    <div>
       <Banner />
-      <Form onRegister={collaborator => newCollaborator(collaborator)} teams={teams.map(team => team.name)} />
-      {teams.map(team =>
-        <Team
-          name={team.name}
-          key={team.name}
-          primaryColor={team.primaryColor}
-          secondaryColor={team.secondaryColor}
-          collaborators={collaborators.filter(collaborator => collaborator.team === team.name)}
-        />
-      )}
+      <Form
+        onCreateTeam={registerTeam}
+        teams={teams.map(team => team.name)}
+        onRegister={collaborator => setCollaborators([...collaborators, collaborator])}
+      />
+      <section className="teams">
+        {teams.map((team, index) => <Team changeColor={changeColor} key={index} team={team} collaborators={collaborators.filter(collaborator => collaborator.team === team.name)} onDelete={deleteCollaborator} onFavorite={resolveFavorite} />)}
+      </section>
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

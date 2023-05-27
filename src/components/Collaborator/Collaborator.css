@@ -1,5 +1,7 @@
 .collaborator {
   width: 280px;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .collaborator .header {
@@ -33,4 +35,16 @@
   color: #000;
   font-size: 18px;
   line-height: 22px;
+  padding: 0 16px;
+}
+
+.delete {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+
+.favorite {
+  margin-top: 20px;
+  
 }

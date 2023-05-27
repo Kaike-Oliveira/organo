@@ -4,6 +4,7 @@
   background-color: #b6e9d0;
   border-radius: 10px;
   margin: 20px;
+  position: relative;
 }
 
 .team h3 {
@@ -18,4 +19,10 @@
   justify-content: space-around;
   margin-top: 32px;
   flex-wrap: wrap;
+}
+
+.input-color {
+  position: absolute;
+  top: 20px;
+  right: 50px;
 }

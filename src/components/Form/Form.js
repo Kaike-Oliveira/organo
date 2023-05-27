@@ -5,7 +5,7 @@ import { useState } from 'react';
 import './Form.css';
 
 // COMPONENTS
-import { TextField } from '../TextField/TextField';
+import { Field } from '../Field/Field';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Button } from '../Button/Button';
 
@@ -15,6 +15,8 @@ export const Form = (props) => {
   const[cargo, setCargo] = useState('');
   const[image, setImage] = useState('');
   const[team, setTeam] = useState('');
+  const[teamName, setTeamName] = useState('');
+  const[teamColor, setTeamColor] = useState('');
 
   const onSave = (e) => {
     e.preventDefault();
@@ -34,21 +36,21 @@ export const Form = (props) => {
     <section className="form">
       <form onSubmit={onSave}>
         <h1>Fill in the data to create the collaborator's card</h1>
-        <TextField
+        <Field
           label="Name"
           placeholder="Type your name"
           required
           value={name}
           onChange={value => setName(value)}
         />
-        <TextField
+        <Field
           label="Cargo"
           placeholder="Type your office"
           required
           value={cargo}
           onChange={value => setCargo(value)}
         />
-        <TextField
+        <Field
           label="Image"
           placeholder="Insert your image URL"
           required
@@ -63,6 +65,28 @@ export const Form = (props) => {
           onChange={value => setTeam(value)}
         />
         <Button>Create Card</Button>
+      </form>
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        props.onCreateTeam({ name: teamName, color: teamColor})
+      }}>
+        <h1>Fill in the data to create a team</h1>
+        <Field
+          label="Team name"
+          placeholder="Type a name to team"
+          required
+          value={teamName}
+          onChange={value => setTeamName(value)}
+        />
+        <Field
+          label="Color"
+          type="color"
+          placeholder="Type a color"
+          required
+          value={teamColor}
+          onChange={value => setTeamColor(value)}
+        />
+        <Button>Create Team</Button>
       </form>
     </section>
   )
