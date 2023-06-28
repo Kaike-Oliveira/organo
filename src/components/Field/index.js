@@ -1,7 +1,7 @@
 // STYLE
 import './Field.css';
 
-export const Field = ({type = 'text', label, placeholder, value, onChange, required = false}) => {
+const Field = ({type = 'text', label, placeholder, value, onChange, required = false}) => {
 
   const handleChange = (e) => {
     onChange(e.target.value)
@@ -20,3 +20,5 @@ export const Field = ({type = 'text', label, placeholder, value, onChange, requi
     </div>
    )
 }
+
+export default Field;

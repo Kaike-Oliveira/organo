@@ -5,11 +5,11 @@ import { useState } from 'react';
 import './Form.css';
 
 // COMPONENTS
-import { Field } from '../Field/Field';
-import { Dropdown } from '../Dropdown/Dropdown';
-import { Button } from '../Button/Button';
+import Field from '../Field';
+import Dropdown from '../Dropdown';
+import Button from '../Button';
 
-export const Form = (props) => {
+const Form = (props) => {
 
   const[name, setName] = useState('');
   const[cargo, setCargo] = useState('');
@@ -91,3 +91,5 @@ export const Form = (props) => {
     </section>
   )
 }
+
+export default Form;

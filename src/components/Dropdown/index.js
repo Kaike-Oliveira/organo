@@ -1,7 +1,7 @@
 // STYLE
 import './Dropdown.css';
 
-export const Dropdown = (props) => {
+const Dropdown = (props) => {
   return ( 
     <div className="dropdown">
       <label>{props.label}</label>
@@ -12,3 +12,5 @@ export const Dropdown = (props) => {
     </div>
    );
 }
+
+export default Dropdown;

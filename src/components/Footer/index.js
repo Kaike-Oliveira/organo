@@ -1,7 +1,7 @@
 // STYLE
 import './Footer.css';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="footer">
       <section>
@@ -33,3 +33,5 @@ export const Footer = () => {
       </section>
     </footer>)
 }
+
+export default Footer;

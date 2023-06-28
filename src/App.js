@@ -3,10 +3,10 @@ import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 // COMPONENTS
-import {Banner} from "./components/Banner/Banner";
-import {Form} from "./components/Form/Form";
-import {Footer} from "./components/Footer/Footer";
-import Team from "./components/Team/Team";
+import Banner from "./components/Banner";
+import Form from "./components/Form";
+import Footer from "./components/Footer";
+import Team from "./components/Team";
 
 function App() {
 

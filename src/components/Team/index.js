@@ -1,6 +1,8 @@
 // CORE
-import Collaborator from '../Collaborator/Collaborator'
 import hexToRgba from 'hex-to-rgba';
+
+// COMPONENTS
+import Collaborator from '../Collaborator'
 
 // STYLE
 import './Team.css'
@@ -21,4 +23,4 @@ const Team = ({ team, collaborators, onDelete, changeColor, onFavorite }) => {
 		)
 }
 
-export default Team
+export default Team;
