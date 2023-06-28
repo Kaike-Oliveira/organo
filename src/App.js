@@ -79,7 +79,7 @@ function App() {
 
   return (
     <div>
-      <Banner />
+      <Banner src="/resources/images/banner.png" alt="Organo Banner" />
       <Form
         onCreateTeam={registerTeam}
         teams={teams.map(team => team.name)}

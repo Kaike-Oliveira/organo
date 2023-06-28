@@ -1,9 +1,18 @@
 // STYLE
 import './Field.css';
 
-const Field = ({type = 'text', label, placeholder, value, onChange, required = false}) => {
+interface FieldProps {
+  onChange: (value: string) => void
+  placeholder: string
+  label: string
+  value: string
+  required: boolean
+  type: string
+}
 
-  const handleChange = (e) => {
+const Field = ({type = 'text', label, placeholder, value, onChange, required = false}: FieldProps) => {
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
   }
 
