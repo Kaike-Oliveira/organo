@@ -1,7 +1,15 @@
 // STYLE
 import './Dropdown.css';
 
-const Dropdown = (props) => {
+interface DropdownProps {
+  onChange: (value: string) => void,
+  label: string,
+  value: string,
+  required: boolean,
+  itens: string[],
+}
+
+const Dropdown = (props: DropdownProps) => {
   return ( 
     <div className="dropdown">
       <label>{props.label}</label>
