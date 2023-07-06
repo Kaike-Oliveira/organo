@@ -1,5 +1,5 @@
 // CORE
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // STYLE
 import './Form.css';
@@ -9,7 +9,16 @@ import Field from '../Field';
 import Dropdown from '../Dropdown';
 import Button from '../Button';
 
-const Form = (props) => {
+// INTERFACE
+import { ICollaborator } from '../../shared/interface/ICollaborator';
+
+interface FormProps {
+  onRegister: (collaborator: ICollaborator) => void,
+  teams: string[],
+  onCreateTeam: (teamName: string, teamColor: string) => void,
+}
+
+const Form = (props: FormProps) => {
 
   const[name, setName] = useState('');
   const[cargo, setCargo] = useState('');
@@ -18,7 +27,7 @@ const Form = (props) => {
   const[teamName, setTeamName] = useState('');
   const[teamColor, setTeamColor] = useState('');
 
-  const onSave = (e) => {
+  const onSave = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     props.onRegister({
       name,
@@ -68,7 +77,7 @@ const Form = (props) => {
       </form>
       <form onSubmit={(e) => {
         e.preventDefault()
-        props.onCreateTeam({ name: teamName, color: teamColor})
+        props.onCreateTeam(teamName, teamColor)
       }}>
         <h1>Fill in the data to create a team</h1>
         <Field

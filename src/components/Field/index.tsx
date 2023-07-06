@@ -2,15 +2,15 @@
 import './Field.css';
 
 interface FieldProps {
-  onChange: (value: string) => void
-  placeholder: string
-  label: string
-  value: string
-  required: boolean
-  type: string
+  onChange: (value: string) => void,
+  placeholder: string,
+  label: string,
+  value: string,
+  required: boolean,
+  type?: string,
 }
 
-const Field = ({type = 'text', label, placeholder, value, onChange, required = false}: FieldProps) => {
+const Field = ({type, label, placeholder, value, onChange, required = false}: FieldProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
